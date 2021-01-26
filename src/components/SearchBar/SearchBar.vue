@@ -1,5 +1,11 @@
 <template>
-  <input class="search-box" type="text" :placeholder="placeholder" />
+  <input
+    class="search-box"
+    type="text"
+    v-model="searchParam"
+    :placeholder="placeholder"
+    @change="searchBarHandler"
+  />
 </template>
 
 <script>
@@ -9,6 +15,16 @@ export default {
     placeholder: {
       type: String,
       required: false,
+    },
+  },
+  data() {
+    return {
+      searchParam: "",
+    };
+  },
+  methods: {
+    searchBarHandler() {
+      this.$emit("search", this.searchParam);
     },
   },
 };
