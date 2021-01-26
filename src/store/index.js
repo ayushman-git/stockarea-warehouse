@@ -1,8 +1,11 @@
 import { createStore } from "vuex";
+import warehouses from "../assets/warehouse/warehouses.json";
 
 export default createStore({
-  state: {},
+  state: {
+    warehouses: warehouses,
+  },
   mutations: {},
   actions: {},
-  modules: {}
+  modules: {},
 });
