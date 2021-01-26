@@ -1,29 +1,19 @@
 <template>
   <aside class="filter-tool">
     <form>
-      <label>
-        City:
-        <select>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="fiat">Fiat</option>
-          <option value="audi">Audi</option>
-        </select>
-      </label>
+      <DropdownFilter filterType="city" />
+      <DropdownFilter filterType="cluster" />
+      <DropdownFilter filterType="type" />
     </form>
   </aside>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import DropdownFilter from "@/components/DropdownFilter/DropdownFilter";
 export default {
   name: "FilterTool",
-  computed: {
-    // getListDetail() {},
-    ...mapState(["warehouses"]),
-  },
-  mounted() {
-    console.log();
+  components: {
+    DropdownFilter,
   },
 };
 </script>
