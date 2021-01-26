@@ -16,4 +16,7 @@ export default {
   background-color: rgb(24, 24, 24);
   padding: 1rem;
 }
+body {
+  background-color: #f5f7fa;
+}
 </style>
