@@ -18,6 +18,6 @@ export default {
 .search-box {
   width: 50%;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 </style>
