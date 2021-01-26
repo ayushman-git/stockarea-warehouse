@@ -4,16 +4,19 @@
       <DropdownFilter filterType="city" />
       <DropdownFilter filterType="cluster" />
       <DropdownFilter filterType="type" />
+      <SliderFilter filterType="space" />
     </form>
   </aside>
 </template>
 
 <script>
-import DropdownFilter from "@/components/DropdownFilter/DropdownFilter";
+import DropdownFilter from "./DropdownFilter/DropdownFilter";
+import SliderFilter from "./SliderFilter/SliderFilter";
 export default {
   name: "FilterTool",
   components: {
     DropdownFilter,
+    SliderFilter,
   },
 };
 </script>

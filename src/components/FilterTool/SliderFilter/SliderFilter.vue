@@ -1,0 +1,54 @@
+<template>
+  <label>
+    {{ filterType.charAt(0).toUpperCase() + filterType.slice(1) }} <br />
+    <input
+      class="slider-filter"
+      v-model="selectedValue"
+      type="range"
+      min="1"
+      :max="getHighestValue"
+    />
+    <p class="slider-value">
+      {{ selectedValue }}
+    </p>
+  </label>
+</template>
+
+<script>
+import { mapState } from "vuex";
+export default {
+  name: "SliderFilter",
+  props: {
+    filterType: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      sliderValue: this.filterType === "space" ? "space_available" : "",
+      selectedValue: 1,
+    };
+  },
+  computed: {
+    getHighestValue() {
+      const numArr = this.warehouses.map((warehouse) => {
+        return warehouse[this.sliderValue];
+      });
+      return Math.max(...numArr);
+    },
+    ...mapState(["warehouses"]),
+  },
+  methods: {},
+};
+</script>
+
+<style scoped>
+.slider-filter {
+  width: 100%;
+}
+
+.slider-value {
+  text-align: center;
+}
+</style>
