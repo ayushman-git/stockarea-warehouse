@@ -51,12 +51,6 @@ export default {
   computed: {
     filteredWarehouses() {
       // let result = [];
-      if (this.typeFilterParam) {
-        console.log(this.typeFilterParam);
-      }
-      if (this.cityFilterParam) {
-        console.log(this.cityFilterParam);
-      }
       if (
         this.searchFilterParam ||
         this.cityFilterParam ||

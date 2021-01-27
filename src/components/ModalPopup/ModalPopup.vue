@@ -39,8 +39,8 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
-  max-width: 700px;
+  width: 35%;
+  max-width: 740px;
   background-color: rgb(24, 24, 24);
   border-radius: 30px;
 }

@@ -23,9 +23,14 @@
       </label>
       <label>
         Live:
-        <input type="radio" name="live" v-model="newLiveStatus" value="true" />
+        <input type="radio" name="live" v-model="newLiveStatus" :value="true" />
         True
-        <input type="radio" name="live" v-model="newLiveStatus" value="false" />
+        <input
+          type="radio"
+          name="live"
+          v-model="newLiveStatus"
+          :value="false"
+        />
         False
       </label>
       <label>
@@ -33,14 +38,14 @@
         <input
           type="radio"
           name="registered"
-          value="true"
+          :value="true"
           v-model="newRegisteredValue"
         />
         True
         <input
           type="radio"
           name="registered"
-          value="false"
+          :value="false"
           v-model="newRegisteredValue"
         />
         False
@@ -53,6 +58,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 import ModalPopup from "@/components/ModalPopup/ModalPopup";
 
 export default {
@@ -85,7 +91,30 @@ export default {
   },
   methods: {
     editWarehouse() {
-      console.log(this.newWarehouseName);
+      const payload = { id: this.getWarehouseDetail.id };
+      if (this.getWarehouseDetail.name != this.newWarehouseName) {
+        payload.name = this.newWarehouseName;
+      }
+      if (this.getWarehouseDetail.city != this.newWarehouseCity) {
+        payload.city = this.newWarehouseCity;
+      }
+      if (this.getWarehouseDetail.type != this.newWarehouseType) {
+        payload.type = this.newWarehouseType;
+      }
+      if (this.getWarehouseDetail.cluster != this.newWarehouseCluster) {
+        payload.cluster = this.newWarehouseCluster;
+      }
+      if (this.getWarehouseDetail.is_registered != this.newRegisteredValue) {
+        payload.is_registered = this.newRegisteredValue;
+      }
+      if (this.getWarehouseDetail.is_live != this.newLiveStatus) {
+        payload.is_live = this.newLiveStatus;
+      }
+      if (this.getWarehouseDetail.space_available != this.newSpaceAmount) {
+        payload.space_available = Number(this.newSpaceAmount);
+      }
+      this.editWarehouseDetail(payload);
+      this.closeModalHandler();
     },
     closeModalHandler() {
       this.revertChanges();
@@ -100,6 +129,7 @@ export default {
       this.newLiveStatus = this.getWarehouseDetail.is_live;
       this.newRegisteredValue = this.getWarehouseDetail.is_registered;
     },
+    ...mapMutations({ editWarehouseDetail: "EDIT_WAREHOUSE_DETAIL" }),
   },
 };
 </script>
