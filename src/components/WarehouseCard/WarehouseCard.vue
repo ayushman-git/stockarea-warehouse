@@ -59,6 +59,8 @@ export default {
 <style scoped>
 .warehouse-card {
   background-color: white;
+  position: relative;
+  right: 6rem;
   border-radius: 20px;
   padding: 3rem 4rem;
   transition: all 0.4s ease 0s;

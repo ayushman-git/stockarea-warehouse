@@ -4,7 +4,7 @@
     type="text"
     v-model="searchParam"
     :placeholder="placeholder"
-    @change="searchBarHandler"
+    @keyup="searchBarHandler"
   />
 </template>
 
@@ -24,6 +24,7 @@ export default {
   },
   methods: {
     searchBarHandler() {
+      this.searchParam.toLowerCase();
       this.$emit("search", this.searchParam);
     },
   },

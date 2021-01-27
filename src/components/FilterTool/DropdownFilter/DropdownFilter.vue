@@ -1,7 +1,7 @@
 <template>
   <label>
     {{ filterType.charAt(0).toUpperCase() + filterType.slice(1) }}
-    <select>
+    <select @change="dropdownHandler" v-model="selectedOption">
       <option
         v-for="(el, index) in getListDetail"
         :key="{ index }"
@@ -24,7 +24,9 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      selectedOption: "",
+    };
   },
   computed: {
     getListDetail() {
@@ -36,6 +38,11 @@ export default {
       return result;
     },
     ...mapState(["warehouses"]),
+  },
+  methods: {
+    dropdownHandler() {
+      this.$emit("inp", { [this.filterType]: this.selectedOption });
+    },
   },
 };
 </script>

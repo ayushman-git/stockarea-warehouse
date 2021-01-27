@@ -3,10 +3,11 @@
     {{ filterType.charAt(0).toUpperCase() + filterType.slice(1) }} <br />
     <input
       class="slider-filter"
-      v-model="selectedValue"
       type="range"
       min="1"
       :max="getHighestValue"
+      v-model="selectedValue"
+      @change="sliderHandler"
     />
     <p class="slider-value">
       {{ selectedValue }}
@@ -39,7 +40,11 @@ export default {
     },
     ...mapState(["warehouses"]),
   },
-  methods: {},
+  methods: {
+    sliderHandler() {
+      this.$emit("inp", { space: this.selectedValue });
+    },
+  },
 };
 </script>
 

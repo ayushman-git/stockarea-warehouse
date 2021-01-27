@@ -1,6 +1,8 @@
 <template>
   <nav id="navbar">
-    <img class="logo" src="../../assets/logo/logo.png" alt="logo" />
+    <router-link :to="{ name: 'Home' }">
+      <img class="logo" src="../../assets/logo/logo.png" alt="logo" />
+    </router-link>
     <button class="button button-clear">Warehouses</button>
   </nav>
 </template>

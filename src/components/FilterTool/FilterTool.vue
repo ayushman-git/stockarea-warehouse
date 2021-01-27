@@ -1,10 +1,10 @@
 <template>
   <aside class="filter-tool">
     <form>
-      <DropdownFilter filterType="city" />
-      <DropdownFilter filterType="cluster" />
-      <DropdownFilter filterType="type" />
-      <SliderFilter filterType="space" />
+      <DropdownFilter @inp="inputHandler" filterType="city" />
+      <DropdownFilter @inp="inputHandler" filterType="cluster" />
+      <DropdownFilter @inp="inputHandler" filterType="type" />
+      <SliderFilter @inp="inputHandler" filterType="space" />
     </form>
   </aside>
 </template>
@@ -17,6 +17,11 @@ export default {
   components: {
     DropdownFilter,
     SliderFilter,
+  },
+  methods: {
+    inputHandler(inpParam) {
+      this.$emit("dropdown", inpParam);
+    },
   },
 };
 </script>
