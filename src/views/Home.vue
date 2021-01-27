@@ -26,7 +26,7 @@
           </router-link>
         </div>
       </section>
-      <aside><FilterTool @dropdown="dropdownHandler" /></aside>
+      <aside><FilterTool @dropdown="dropdownHandler" @reset="reset" /></aside>
     </main>
   </section>
 </template>
@@ -51,6 +51,12 @@ export default {
   computed: {
     filteredWarehouses() {
       // let result = [];
+      if (this.typeFilterParam) {
+        console.log(this.typeFilterParam);
+      }
+      if (this.cityFilterParam) {
+        console.log(this.cityFilterParam);
+      }
       if (
         this.searchFilterParam ||
         this.cityFilterParam ||
@@ -59,12 +65,15 @@ export default {
         this.spaceFilterParam
       ) {
         return this.warehouses.filter((warehouse) => {
-          // return (
-          //   warehouse.city.toLowerCase() === this.cityFilterParam &&
-          //   warehouse.type.toLowerCase() === this.typeFilterParam
-          // );
+          return this.cityFilterParam
+            ? warehouse.city.toLowerCase() === this.cityFilterParam
+            : true && this.typeFilterParam
+            ? warehouse.type.toLowerCase() === this.typeFilterParam
+            : true && this.searchFilterParam
+            ? warehouse.name.toLowerCase().includes(this.searchFilterParam)
+            : true;
 
-          return warehouse.city.toLowerCase() === this.cityFilterParam;
+          // return warehouse.city.toLowerCase() === this.cityFilterParam;
           // return warehouse.type.toLowerCase() === this.typeFilterParam;
           // return warehouse.name.toLowerCase().includes(this.searchFilterParam);
           // return warehouse.cluster.toLowerCase() === this.clusterFilterParam;
@@ -77,6 +86,14 @@ export default {
     ...mapState(["warehouses"]),
   },
   methods: {
+    reset() {
+      this.searchFilterParam = "";
+      this.searchFilterParam = "";
+      this.cityFilterParam = "";
+      this.clusterFilterParam = "";
+      this.typeFilterParam = "";
+      this.spaceFilterParam = 0;
+    },
     searchHandler(searchWord) {
       this.searchFilterParam = searchWord;
     },

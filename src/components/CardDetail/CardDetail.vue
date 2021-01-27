@@ -1,7 +1,11 @@
 <template>
   <div class="warehouse-detail">
     <div class="warehouse-title-wrap">
-      <img class="warehouse-detail-img" :src="getImgPath" alt="" />
+      <img
+        class="warehouse-detail-img"
+        :src="getImgPath"
+        alt="warehouse detail"
+      />
       <strong>{{ detailTitle }} - </strong>
     </div>
     <span>{{ warehouseDetail[Object.keys(warehouseDetail)] }}</span>
@@ -45,7 +49,7 @@ export default {
   width: max-content;
 }
 .warehouse-detail > :not(:first-child) {
-  margin-left: 4rem;
+  margin-left: 2rem;
 }
 .warehouse-detail-img {
   height: 1.6rem;

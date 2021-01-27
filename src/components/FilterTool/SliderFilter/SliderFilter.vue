@@ -24,6 +24,10 @@ export default {
       type: String,
       required: true,
     },
+    reset: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -44,6 +48,11 @@ export default {
     sliderHandler() {
       this.$emit("inp", { space: this.selectedValue });
     },
+  },
+  beforeUpdate() {
+    if (this.reset) {
+      this.selectedValue = 1;
+    }
   },
 };
 </script>

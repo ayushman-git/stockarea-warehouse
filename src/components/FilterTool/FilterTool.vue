@@ -1,10 +1,13 @@
 <template>
   <aside class="filter-tool">
     <form>
-      <DropdownFilter @inp="inputHandler" filterType="city" />
-      <DropdownFilter @inp="inputHandler" filterType="cluster" />
-      <DropdownFilter @inp="inputHandler" filterType="type" />
-      <SliderFilter @inp="inputHandler" filterType="space" />
+      <DropdownFilter @inp="inputHandler" :reset="reset" filterType="city" />
+      <DropdownFilter @inp="inputHandler" :reset="reset" filterType="cluster" />
+      <DropdownFilter @inp="inputHandler" :reset="reset" filterType="type" />
+      <SliderFilter @inp="inputHandler" :reset="reset" filterType="space" />
+      <button class="reset-btn" @click.prevent="resetHandler" :reset="reset">
+        Reset
+      </button>
     </form>
   </aside>
 </template>
@@ -18,9 +21,19 @@ export default {
     DropdownFilter,
     SliderFilter,
   },
+  data() {
+    return {
+      reset: false,
+    };
+  },
   methods: {
     inputHandler(inpParam) {
+      this.reset = false;
       this.$emit("dropdown", inpParam);
+    },
+    resetHandler() {
+      this.reset = true;
+      this.$emit("reset");
     },
   },
 };
@@ -29,5 +42,8 @@ export default {
 <style scoped>
 .filter-tool {
   position: fixed;
+}
+.reset-btn {
+  margin: 0 auto;
 }
 </style>

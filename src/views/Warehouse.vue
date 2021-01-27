@@ -1,20 +1,63 @@
 <template>
-  <div class="about">
+  <div class="warehouse-view">
     <h1>This is an about page</h1>
+    <section class="warehosue-view-card-wrap">
+      <WarehouseCard
+        :card="false"
+        :name="getWarehouseDetail.name"
+        :isLive="getWarehouseDetail.is_live"
+        :isRegistered="getWarehouseDetail.is_registered"
+        :city="getWarehouseDetail.city"
+        :space="getWarehouseDetail.space_available"
+        :type="getWarehouseDetail.type"
+        :cluster="getWarehouseDetail.cluster"
+        @pinClick="showModal = true"
+      />
+    </section>
+    <WarehouseEditForm
+      :getWarehouseDetail="getWarehouseDetail"
+      :showModal="showModal"
+      @closeModal="showModal = false"
+    />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+
+import WarehouseCard from "@/components/WarehouseCard/WarehouseCard";
+import WarehouseEditForm from "../components/ModalPopup/WarehouseEditForm/WarehosueEditForm";
 export default {
   name: "Warehouse",
   props: ["id"],
+  components: {
+    WarehouseCard,
+    WarehouseEditForm,
+  },
+  data() {
+    return {
+      showModal: false,
+    };
+  },
+
   computed: {
     ...mapGetters(["getWarehouseById"]),
     getWarehouseDetail() {
       return this.getWarehouseById(this.id);
     },
   },
-  mounted() {},
+  methods: {},
 };
 </script>
+
+<style scoped>
+.warehouse-view {
+  color: rgb(221, 221, 221);
+}
+
+.warehosue-view-card-wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+</style>

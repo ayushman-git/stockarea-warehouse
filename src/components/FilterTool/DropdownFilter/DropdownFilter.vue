@@ -22,6 +22,10 @@ export default {
       type: String,
       required: true,
     },
+    reset: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -43,6 +47,11 @@ export default {
     dropdownHandler() {
       this.$emit("inp", { [this.filterType]: this.selectedOption });
     },
+  },
+  beforeUpdate() {
+    if (this.reset) {
+      this.selectedOption = "";
+    }
   },
 };
 </script>
