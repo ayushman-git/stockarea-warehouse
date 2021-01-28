@@ -3,7 +3,11 @@
     <div class="warehouse-title-wrap">
       <img
         class="warehouse-detail-img"
-        :src="getImgPath"
+        :src="
+          require(`../../assets/icons/${Object.keys(
+            warehouseDetail
+          ).toString()}.svg`)
+        "
         alt="warehouse detail"
       />
       <strong>{{ detailTitle }} - </strong>
@@ -27,14 +31,6 @@ export default {
       const firstLetterCap = title.charAt(0).toUpperCase() + title.slice(1);
       return firstLetterCap;
     },
-    getImgPath() {
-      return require(`../../assets/icons/${Object.keys(
-        this.warehouseDetail
-      ).toString()}.svg`);
-    },
-  },
-  mounted() {
-    console.log();
   },
 };
 </script>

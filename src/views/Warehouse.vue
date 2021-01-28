@@ -1,6 +1,6 @@
 <template>
   <div class="warehouse-view">
-    <h1>This is an about page</h1>
+    <h1>Warehouse Detail</h1>
     <section class="warehosue-view-card-wrap">
       <WarehouseCard
         :card="false"
@@ -53,6 +53,10 @@ export default {
 <style scoped>
 .warehouse-view {
   color: rgb(221, 221, 221);
+}
+
+.warehouse-view > h1 {
+  text-align: center;
 }
 
 .warehosue-view-card-wrap {
