@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     searchBarHandler() {
-      this.searchParam.toLowerCase();
+      this.searchParam = this.searchParam.toLowerCase();
       this.$emit("search", this.searchParam);
     },
   },
