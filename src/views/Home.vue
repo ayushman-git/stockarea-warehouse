@@ -50,32 +50,33 @@ export default {
   },
   computed: {
     filteredWarehouses() {
-      // let result = [];
-      if (
-        this.searchFilterParam ||
-        this.cityFilterParam ||
-        this.clusterFilterParam ||
-        this.typeFilterParam ||
-        this.spaceFilterParam
-      ) {
-        return this.warehouses.filter((warehouse) => {
-          return this.cityFilterParam
-            ? warehouse.city.toLowerCase() === this.cityFilterParam
-            : true && this.typeFilterParam
-            ? warehouse.type.toLowerCase() === this.typeFilterParam
-            : true && this.searchFilterParam
-            ? warehouse.name.toLowerCase().includes(this.searchFilterParam)
-            : true;
+      const filterParams = {};
+      if (this.searchFilterParam) filterParams.name = [this.searchFilterParam];
+      if (this.cityFilterParam) filterParams.city = [this.cityFilterParam];
+      if (this.clusterFilterParam)
+        filterParams.cluster = [this.clusterFilterParam];
+      if (this.typeFilterParam) filterParams.type = [this.typeFilterParam];
+      if (this.spaceFilterParam)
+        filterParams.space_available = [this.spaceFilterParam];
 
-          // return warehouse.city.toLowerCase() === this.cityFilterParam;
-          // return warehouse.type.toLowerCase() === this.typeFilterParam;
-          // return warehouse.name.toLowerCase().includes(this.searchFilterParam);
-          // return warehouse.cluster.toLowerCase() === this.clusterFilterParam;
-          // return warehouse.space_available >= this.spaceFilterParam;
+      const filterKeys = Object.keys(filterParams);
+      const a = this.warehouses.filter((warehouse) => {
+        return filterKeys.every((key) => {
+          if (!filterParams[key].length) {
+            return true;
+          }
+          return filterParams[key].find((filter) => {
+            if (key === "space_available") {
+              return warehouse[key] >= filter;
+            } else {
+              return warehouse[key]
+                .toLowerCase()
+                .includes(filter.toLowerCase());
+            }
+          });
         });
-        // result = [...filteredByName];
-      }
-      return this.warehouses;
+      });
+      return a;
     },
     ...mapState(["warehouses"]),
   },
@@ -102,6 +103,7 @@ export default {
         this.typeFilterParam = inp[Object.keys(inp)].toLowerCase();
       }
       if (Object.keys(inp).toString() === "space") {
+        console.log(inp);
         this.spaceFilterParam = inp[Object.keys(inp)];
       }
     },
