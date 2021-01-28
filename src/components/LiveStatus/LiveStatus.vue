@@ -1,5 +1,5 @@
 <template>
-  <div @click="changeStatus" :style="colorStatus"></div>
+  <div :style="colorStatus"></div>
 </template>
 
 <script>
@@ -18,7 +18,6 @@ export default {
       } else return { "background-color": "red" };
     },
   },
-  methods: {},
 };
 </script>
 

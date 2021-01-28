@@ -12,7 +12,7 @@ export default {
     },
     metaType: {
       type: String,
-      default: "registered",
+      default: () => "registered",
     },
   },
   computed: {
@@ -20,10 +20,11 @@ export default {
       if (this.metaType === "registered") {
         if (this.isRegistered) {
           return "Registered";
+        } else {
+          return "Not Registered";
         }
-        return "Not Registered";
       }
-      return "Undefined";
+      return this.metaType;
     },
   },
 };

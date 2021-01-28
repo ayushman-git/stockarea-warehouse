@@ -3,7 +3,9 @@
     <router-link :to="{ name: 'Home' }">
       <img class="logo" src="../../assets/logo/logo.png" alt="logo" />
     </router-link>
-    <button class="button button-clear">Warehouses</button>
+    <router-link :to="{ name: 'Home' }">
+      <button class="button button-clear">Warehouses</button>
+    </router-link>
   </nav>
 </template>
 
