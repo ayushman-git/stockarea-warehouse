@@ -36,5 +36,7 @@ export default {
   width: 50%;
   max-width: 700px;
   margin: 2rem auto;
+  margin-top: 5rem;
+  background-color: rgb(236, 236, 236);
 }
 </style>

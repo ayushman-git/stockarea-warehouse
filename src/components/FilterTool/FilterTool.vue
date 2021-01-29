@@ -41,9 +41,12 @@ export default {
 
 <style scoped>
 .filter-tool {
-  position: fixed;
+  position: sticky;
+  top: 5rem;
 }
 .reset-btn {
-  margin: 0 auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>

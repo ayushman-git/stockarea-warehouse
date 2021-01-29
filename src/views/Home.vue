@@ -1,5 +1,10 @@
 <template>
   <section class="home">
+    <img
+      class="hero-img"
+      src="../assets/images/warehouse.jpg"
+      alt="warehouse"
+    />
     <aside class="searchbar-warp">
       <SearchBar placeholder="Enter warehouse name" @search="searchHandler" />
     </aside>
@@ -116,6 +121,10 @@ main {
   display: flex;
   flex-flow: row wrap-reverse;
   justify-content: center;
+  position: relative;
+}
+main a {
+  color: rgb(94 94 94);
 }
 .searchbar-warp {
   text-align: center;

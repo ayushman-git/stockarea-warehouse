@@ -20,8 +20,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5rem;
-  border-bottom: 1px solid black;
+  padding: 1rem 10%;
+  box-shadow: 2px 2px 35px -1px rgba(0, 0, 0, 0.45);
 }
 
 .logo {

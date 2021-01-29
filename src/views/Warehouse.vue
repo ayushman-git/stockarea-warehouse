@@ -56,6 +56,7 @@ export default {
 
 .warehouse-view > h1 {
   text-align: center;
+  margin-top: 5rem;
 }
 
 .warehosue-view-card-wrap {
