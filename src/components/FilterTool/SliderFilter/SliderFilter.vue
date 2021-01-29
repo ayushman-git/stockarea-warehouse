@@ -29,6 +29,7 @@ export default {
       default: false,
     },
   },
+  emits: ["inp"],
   data() {
     return {
       sliderValue: this.filterType === "space" ? "space_available" : "",

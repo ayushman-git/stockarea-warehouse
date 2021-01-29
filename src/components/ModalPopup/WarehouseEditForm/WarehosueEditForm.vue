@@ -72,6 +72,7 @@ export default {
       type: Object,
     },
   },
+  emits: ["closeModal"],
   components: {
     "modal-popup": ModalPopup,
   },

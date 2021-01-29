@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import WarehouseCard from "@/components/WarehouseCard/WarehouseCard";
 import FilterTool from "@/components/FilterTool/FilterTool";
@@ -54,7 +54,7 @@ export default {
     };
   },
   computed: {
-    filteredWarehouses() {
+    filterParams() {
       const filterParams = {};
       if (this.searchFilterParam) filterParams.name = [this.searchFilterParam];
       if (this.cityFilterParam) filterParams.city = [this.cityFilterParam];
@@ -63,27 +63,14 @@ export default {
       if (this.typeFilterParam) filterParams.type = [this.typeFilterParam];
       if (this.spaceFilterParam)
         filterParams.space_available = [this.spaceFilterParam];
-
-      const filterKeys = Object.keys(filterParams);
-      const a = this.warehouses.filter((warehouse) => {
-        return filterKeys.every((key) => {
-          if (!filterParams[key].length) {
-            return true;
-          }
-          return filterParams[key].find((filter) => {
-            if (key === "space_available") {
-              return warehouse[key] >= filter;
-            } else {
-              return warehouse[key]
-                .toLowerCase()
-                .includes(filter.toLowerCase());
-            }
-          });
-        });
-      });
-      return a;
+      return filterParams;
     },
+    filteredWarehouses() {
+      return this.getFilteredWarehouses(this.filterParams);
+    },
+
     ...mapState(["warehouses"]),
+    ...mapGetters(["getFilteredWarehouses"]),
   },
   methods: {
     reset() {

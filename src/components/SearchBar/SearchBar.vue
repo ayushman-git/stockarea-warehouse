@@ -4,7 +4,7 @@
     type="text"
     v-model="searchParam"
     :placeholder="placeholder"
-    @keyup="searchBarHandler"
+    @keyup="addTimeout"
   />
 </template>
 
@@ -17,12 +17,20 @@ export default {
       required: false,
     },
   },
+  emits: ["search"],
   data() {
     return {
       searchParam: "",
+      intervalHolder: null,
     };
   },
   methods: {
+    addTimeout() {
+      clearTimeout(this.intervalHolder);
+      this.intervalHolder = setTimeout(() => {
+        this.searchBarHandler();
+      }, 1000);
+    },
     searchBarHandler() {
       this.searchParam = this.searchParam.toLowerCase();
       this.$emit("search", this.searchParam);

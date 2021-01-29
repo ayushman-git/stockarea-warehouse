@@ -21,6 +21,7 @@ export default {
     DropdownFilter,
     SliderFilter,
   },
+  emits: ["dropdown", "reset"],
   data() {
     return {
       reset: false,

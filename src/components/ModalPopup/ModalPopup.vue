@@ -10,6 +10,7 @@
 <script>
 export default {
   name: "ModalPopup",
+  emits: ["closeModal"],
   methods: {
     closeHandler() {
       this.$emit("closeModal");

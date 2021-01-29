@@ -31,6 +31,7 @@ export default {
       default: false,
     },
   },
+  emits: ["inp"],
   data() {
     return {
       selectedOption: "",

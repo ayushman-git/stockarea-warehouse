@@ -7,6 +7,7 @@
 <script>
 export default {
   name: "ModalPin",
+  emits: ["click"],
   methods: {
     clickHandler() {
       this.$emit("click");

@@ -60,6 +60,7 @@ export default {
       required: true,
     },
   },
+  emits: ["pinClick"],
   computed: {
     cardStyle() {
       let style = {};
