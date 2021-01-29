@@ -4,7 +4,7 @@ export default {
   },
   getFilteredWarehouses: (state) => (filterParams) => {
     const filterKeys = Object.keys(filterParams);
-    const a = state.warehouses.filter((warehouse) => {
+    const result = state.warehouses.filter((warehouse) => {
       return filterKeys.every((key) => {
         if (!filterParams[key].length) {
           return true;
@@ -18,6 +18,6 @@ export default {
         });
       });
     });
-    return a;
+    return result;
   },
 };
