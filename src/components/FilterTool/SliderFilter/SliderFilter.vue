@@ -48,11 +48,14 @@ export default {
     sliderHandler() {
       this.$emit("inp", { space: this.selectedValue });
     },
+    resetSlider() {
+      if (this.reset) {
+        this.selectedValue = 1;
+      }
+    },
   },
   beforeUpdate() {
-    if (this.reset) {
-      this.selectedValue = 1;
-    }
+    this.resetSlider();
   },
 };
 </script>

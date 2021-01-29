@@ -29,7 +29,6 @@ describe("SearchBar", () => {
     const input = wrapper.find("input");
     await input.setValue("Warehouse");
     wrapper.vm.searchBarHandler();
-    await wrapper.vm.$nextTick();
     expect(wrapper.emitted().search[0]).toEqual(["warehouse"]);
   });
 });
