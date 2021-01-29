@@ -1,7 +1,11 @@
 <template>
   <label>
     {{ filterType.charAt(0).toUpperCase() + filterType.slice(1) }}
-    <select @change="dropdownHandler" v-model="selectedOption">
+    <select
+      class="dropdown-filter"
+      @change="dropdownHandler"
+      v-model="selectedOption"
+    >
       <option
         v-for="(el, index) in getListDetail"
         :key="{ index }"
@@ -47,11 +51,14 @@ export default {
     dropdownHandler() {
       this.$emit("inp", { [this.filterType]: this.selectedOption });
     },
+    resetDropdown() {
+      if (this.reset) {
+        this.selectedOption = "";
+      }
+    },
   },
   beforeUpdate() {
-    if (this.reset) {
-      this.selectedOption = "";
-    }
+    this.resetDropdown();
   },
 };
 </script>

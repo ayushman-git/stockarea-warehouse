@@ -46,7 +46,6 @@ export default {
       return this.getWarehouseById(this.id);
     },
   },
-  methods: {},
 };
 </script>
 

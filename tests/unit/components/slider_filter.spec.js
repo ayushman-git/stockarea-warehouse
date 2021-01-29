@@ -46,6 +46,7 @@ describe("SliderFilter", () => {
     });
   });
   afterEach(() => {
+    wrapper = null;
     $store = null;
   });
   it("[SliderFilter] is loaded", () => {
