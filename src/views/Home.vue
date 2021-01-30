@@ -75,7 +75,6 @@ export default {
   methods: {
     reset() {
       this.searchFilterParam = "";
-      this.searchFilterParam = "";
       this.cityFilterParam = "";
       this.clusterFilterParam = "";
       this.typeFilterParam = "";
